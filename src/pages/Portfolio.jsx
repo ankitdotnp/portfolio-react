@@ -1,202 +1,29 @@
-
-import { useState, useEffect } from 'react';
-import { Github, ExternalLink, Linkedin, Mail, FileText, Menu } from 'lucide-react';
+import React, { useState } from 'react';
+import { Github, Linkedin, FileText, ExternalLink, Mail, File } from 'lucide-react';
 
 const Portfolio = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('about');
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+  const skills = [
+    "Python", "Django", "Laravel", "React", "PostgreSQL",
+    "MySQL", "Postman", "Github"
+  ];
 
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (elementTop < windowHeight - 100) {
-          element.classList.add('animate-fade-in');
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-black text-white font-poppins">
-
-      <nav className="fixed w-full top-0 left-0 px-4 sm:px-16 py-4 backdrop-blur-md z-50 transition-colors">
-        <div className="border-b border-gray-800 pb-4 max-w-4xl mx-auto flex justify-between items-center">
-          <div className="text-xl font-bold cursor-pointer "><a href="#about">अंकित</a></div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center text-sm space-x-8">
-            <a href="#about" className="text-gray-400 hover:text-white transition">About</a>
-            <a href="#projects" className="text-gray-400 hover:text-white transition">Projects</a>
-            <a href="#contact" className="text-gray-400 hover:text-white transition">Contact</a>
-            <a
-              href="/Ankit-Karki-resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-900 transition font-sm"
-            >
-              Resume
-            </a>
-
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={toggleMobileMenu}
-            className="md:hidden text-gray-400 hover:text-white"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed w-full top-0 left-0 bg-black/95 backdrop-blur-md z-40 pt-16 pb-8 px-4 md:hidden transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-          }`}
-      >
-        <div className="flex flex-col space-y-4">
-          <a
-            href="#about"
-            onClick={closeMobileMenu}
-            className="text-gray-400 hover:text-white py-2 px-4"
-          >
-            About
-          </a>
-          <a
-            href="#projects"
-            onClick={closeMobileMenu}
-            className="text-gray-400 hover:text-white py-2 px-4"
-          >
-            Projects
-          </a>
-          <a
-            href="#contact"
-            onClick={closeMobileMenu}
-            className="text-gray-400 hover:text-white py-2 px-4"
-          >
-            Contact
-          </a>
-          <a
-            href="/Ankit-Karki-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition text-center font-medium mt-2"
-          >
-            Resume
-          </a>
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <section id="about" className="pt-24 pb-16 px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Main Content */}
-          <div className="animate-on-scroll" style={{ opacity: 0 }}>
-            <h1 className="text-4xl md:text-5xl sm:font-normal lg:font-bold mb-1 text-white">Ankit Karki</h1>
-
-
-            <p className="text-lg md:text-lg text-gray-400 mb-8">Backend Developer</p>
-
-            <div className="text-gray-400 leading-relaxed mb-12 space-y-4 justify-center-safe">
-              <p>
-                Hi, I'm Ankit, a passionate <span className="text-white font-medium">Backend Developer</span> with expertise in
-                Django, Python, and building scalable web applications. Based in Kathmandu, Nepal, I specialize
-                in creating robust server-side solutions.
-              </p>
-              <p>
-                My focus is on developing efficient APIs, optimizing database performance, and implementing
-                secure authentication systems to power modern web applications.
-              </p>
-              <p>
-                Currently working on <span className="text-white font-medium">Trendy</span> (e-commerce platform)
-                and <span className="text-white font-medium">ePadhai</span> (LMS platform), where I architect and
-                implement core backend functionalities.
-              </p>
-            </div>
-          </div>
-
-          <h2 className="text-xl font-bold mb-4 text-white animate-on-scroll" style={{ opacity: 0 }}>Skills</h2>
-          <div className="flex flex-wrap gap-3 text-sm animate-on-scroll" style={{ opacity: 0 }}>
-            <span className="bg-gray-800 text-white px-4 py-2 rounded-2xl border border-gray-700 hover:border-gray-600 hover:bg-gray-700 transition-all cursor-default">Python</span>
-            <span className="bg-gray-800 text-white px-4 py-2 rounded-2xl border border-gray-700 hover:border-gray-600 hover:bg-gray-700 transition-all cursor-default">Django</span>
-            <span className="bg-gray-800 text-white px-4 py-2 rounded-2xl border border-gray-700 hover:border-gray-600 hover:bg-gray-700 transition-all cursor-default">Django REST Framework</span>
-            <span className="bg-gray-800 text-white px-4 py-2 rounded-2xl border border-gray-700 hover:border-gray-600 hover:bg-gray-700 transition-all cursor-default">PostgreSQL</span>
-            <span className="bg-gray-800 text-white px-4 py-2 rounded-2xl border border-gray-700 hover:border-gray-600 hover:bg-gray-700 transition-all cursor-default">MySQL</span>
-            <span className="bg-gray-800 text-white px-4 py-2 rounded-2xl border border-gray-700 hover:border-gray-600 hover:bg-gray-700 transition-all cursor-default">Laravel</span>
-          </div>
-        </div>
-      </section>
-      <ProjectsSection />
-
-      {/* Contact Section */}
-      <section id="contact" className="py-16 px-8 pb-24">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8 text-white animate-on-scroll" style={{ opacity: 0 }}>Let's Connect</h2>
-          <div className="flex space-x-6 animate-on-scroll" style={{ opacity: 0 }}>
-            <a
-              href="https://github.com/ankitkarki27"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ankitkarki27/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="mailto:ankitkarki8088@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <Mail className="w-6 h-6" />
-            </a>
-            <a
-              href="/Ankit-Karki-resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <FileText className="w-6 h-6" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-6 text-center text-sm text-gray-500 border-t border-gray-800">
-        © {new Date().getFullYear()} Ankit Karki. All rights reserved.
-      </footer>
-    </div>
-  );
-};
-
-const ProjectsSection = () => {
   const projects = [
+    {
+      title: "ELearning Management System",
+      description: "A Full-stack eLearning platform with community features, built with Django, React (Vite), and PostgreSQL. Implements Redux Toolkit for state management and Cloudinary for media storage. Admins can create/manage courses, track enrollments, and moderate forums. Students can enroll in courses, complete lessons, and participate in discussion forums.",
+      tags: [
+        "React (Vite)",
+        "Django",
+        "PostgreSQL",
+        "Redux Toolkit",
+        "Cloudinary",
+        "Tailwind CSS"
+      ],
+      github: "https://github.com/ankitkarki27/eLearning-Platform-django-react",
+
+    },
     {
       title: "Constructions Company Website",
       description: "A full-stack web app built with Laravel, React (Vite), and MySQL. Admins can easily manage and publish projects, blogs, and services. Visitors can explore project galleries, read blog posts, and learn about the company. Fully responsive and optimized for a smooth user experience.",
@@ -209,12 +36,13 @@ const ProjectsSection = () => {
       description: "A job portal built with Laravel, Tailwind CSS, and MySQL. Companies can post job openings, and seekers can browse and apply easily through a user-friendly interface.",
       tags: ["Laravel", "MySQL", "Tailwind CSS"],
       github: "https://github.com/ankitkarki27/job-portal",
+
     },
     {
-      title: "Trendy: E-commerce App",
+      title: "Trend-e-vision: E-commerce App",
       description: "An e-commerce platform built with Django, Tailwind CSS, and PostgreSQL. It offers a seamless shopping experience with product browsing, order and checkout.",
       link: "https://ankitkarki27.pythonanywhere.com/",
-      github: "#"
+      github: "https://github.com/ankitkarki27/dj-ecomstore.git"
     },
     {
       title: "Bookmarker",
@@ -222,6 +50,7 @@ const ProjectsSection = () => {
       tags: ["Django", "React"],
       github: "https://github.com/ankitkarki27/bookmarker",
       link: "https://bookmarker-theta.vercel.app/",
+
     },
     {
       title: "Donors Nepal",
@@ -229,69 +58,200 @@ const ProjectsSection = () => {
       tags: ["PHP", "Laravel", "MySQL"],
       github: "https://github.com/ankitkarki27/Donors-Nepal.git",
       link: "https://github.com/ankitkarki27/Donors-Nepal.git",
+
+    },
+    {
+      title: "Uthaoo: Online Scrap Collection System",
+      category: "full-stack",
+      description: "A full-stack web application for scheduling and managing scrap pickups, developed using PHP for the backend, MySQL for the database, and HTML, CSS, and JavaScript for the frontend.",
+      image: "assets/image/project-uthaoo.jpg",
+      tags: ["PHP", "MySQL"],
+      github: "https://github.com/ankitkarki27/uthaoo-Online-Scrap-Collection-System.git",
+      date: "2023"
     }
   ];
 
-  return (
-    <section id="projects" className="py-16 px-8">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold mb-8 text-white animate-on-scroll" style={{ opacity: 0 }}>Projects</h2>
+  const experience = [
+    {
+      role: "Full Stack Developer",
+      company: "Tech Solutions Ltd",
+      period: "2023 - Present",
+      description: "Develop and maintain web applications using React and Django. Collaborate with cross-functional teams to deliver scalable solutions."
+    }
+  ];
 
-        <div className="space-y-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="border-b border-gray-800 pb-8 animate-on-scroll hover:border-gray-700 transition-colors"
-              style={{
-                opacity: 0,
-                animationDelay: `${index * 0.1}s`
-              }}
-            >
-              <h3 className="text-xl font-semibold mb-3 text-white">{project.title}</h3>
-              <p className="text-gray-400 mb-6 space-y-4 leading-relaxed">
-                {project.description}
+  const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="min-h-screen bg-black text-gray-100">
+      <section id="about" className="min-h-[70vh] flex items-center ">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full">
+          <div className="space-y-8">
+            <div className="space-y-2">
+              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">Ankit Karki</h1>
+              <p className="text-blue-400 text-xl font-medium">Backend Developer</p>
+            </div>
+
+            <div className="space-y-2 text-gray-400 justify-between">
+              <p className="text-m leading-relaxed">
+                Hi, I'm Ankit, a passionate <span className="text-white font-medium">Backend Developer</span> with expertise in
+                Django, Python, laravel and building scalable web applications. Based in Kathmandu, Nepal, I specialize
+                in creating robust server-side solutions.
               </p>
 
-              {project.tags && (
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+              <div className="space-y-2">
+                <p className="text-m leading-relaxed">
+                  My focus is on developing efficient APIs, optimizing database performance, and implementing
+                  secure authentication systems to power modern web applications.
+                </p>
+              </div>
 
-              <div className="flex space-x-4">
-                <a
-                  href={project.github}
-                  className="text-gray-300 hover:text-white transition-colors flex items-center group text-sm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="w-4 h-4 mr-1" />
-                  GitHub
-                </a>
-                {project.link && project.link !== "#" && (
+              <p className="text-m leading-relaxed">
+                Currently working on <span className="text-white font-medium">Trendy</span> (e-commerce platform)
+                and <span className="text-white font-medium">ePadhai</span> (LMS platform), where I lead the
+                development of both frontend and backend systems.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Main Content with padding bottom for navigation */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 pb-32 space-y-16">
+        {/* Skills */}
+        <section id="skills">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Skills</h2>
+          <div className="flex flex-wrap gap-3">
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className="px-4 py-2 rounded-full bg-gray-800 text-gray-200 text-sm hover:bg-gray-700 transition-colors"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </section>
+        {/* Experience */}
+        <section id="experience">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Experience</h2>
+          <div className="space-y-8">
+            {experience.map((exp, index) => (
+              <div key={index} className="border-l-2 border-blue-500 pl-6">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
+                  <h3 className="font-semibold text-lg sm:text-xl">{exp.role}</h3>
+                  <span className="text-gray-400 text-sm">{exp.period}</span>
+                </div>
+                <p className="text-blue-400 font-medium mb-3">{exp.company}</p>
+                <p className="text-gray-300">{exp.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="projects">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Projects</h2>
+          <div className="space-y-8">
+            {projects.map((project, index) => (
+              <div key={index} className="border-l-2 border-blue-500 pl-6">
+                <h3 className="font-semibold text-lg sm:text-xl mb-3">{project.name}</h3>
+                <p className="text-gray-300 mb-4">{project.description}</p>
+                <div className="flex space-x-4">
                   <a
-                    href={project.link}
-                    className="text-green-300 hover:text-blue-400 transition-colors flex items-center group text-sm"
+                    href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
+                  >
+                    <Github className="w-4 h-4 mr-1" />
+                    GitHub
+                  </a>
+                  <a
+                    href={project.demo}
+                    className="flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
                   >
                     <ExternalLink className="w-4 h-4 mr-1" />
                     Live Demo
                   </a>
-                )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </section>
+
+
+
+        {/* Contact */}
+        <section id="contact">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Contact</h2>
+          <div className="flex space-x-6">
+            <a
+              href="https://github.com/ankitkarki27"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Github className="w-5 h-5" />
+
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ankitkarki27/" target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Linkedin className="w-5 h-5" />
+
+            </a>
+            <a
+              href="mailto:ankitkarki8088@gmail.com" target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <Mail className="w-5 h-5" />
+
+            </a>
+
+            <a
+              href="https://drive.google.com/file/d/1bTqSOuzPvr34nuxSrdb36tpSxGywTKVp/view?usp=sharing" target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+            >
+              <File className="w-5 h-5" />
+            </a>
+          </div>
+        </section>
       </div>
-    </section>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-800 py-2 text-gray-400">
+        <div className="max-w-4xl mx-auto px-6 text-center text-sm">
+          © {new Date().getFullYear()} Alex Johnson. All rights reserved.
+        </div>
+      </footer>
+
+      {/* Bottom Navigation - Fixed position */}
+      <nav className="fixed bottom-4 left-0 right-0 z-50">
+        <div className="max-w-md mx-auto px-4">
+          <div className="flex justify-center bg-black/80 backdrop-blur-md rounded-full shadow-2xl p-1 border border-gray-800">
+            {['about', 'projects', 'skills', 'contact'].map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className={`capitalize transition-all duration-200 ease-out px-6 py-2.5 rounded-full text-sm font-medium mx-1 relative ${activeSection === section
+                  ? 'bg-gray-200 text-black shadow-lg'
+                  : 'text-gray-300 hover:bg-gray-400 hover:text-black'
+                  }`}
+              >
+                {section}
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 
