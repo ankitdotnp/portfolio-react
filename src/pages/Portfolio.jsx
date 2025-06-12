@@ -1,256 +1,402 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, FileText, ExternalLink, Mail, File } from 'lucide-react';
+import { Github, Linkedin, ExternalLink, Mail, Phone, MapPin, Download } from 'lucide-react';
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const skills = [
     "Python", "Django", "Laravel", "React", "PostgreSQL",
     "MySQL", "Postman", "Github"
   ];
-
+ 
   const projects = [
-    {
-      title: "ELearning Management System",
-      description: "A Full-stack eLearning platform with community features, built with Django, React (Vite), and PostgreSQL. Implements Redux Toolkit for state management and Cloudinary for media storage. Admins can create/manage courses, track enrollments, and moderate forums. Students can enroll in courses, complete lessons, and participate in discussion forums.",
-      tags: [
-        "React (Vite)",
-        "Django",
-        "PostgreSQL",
-        "Redux Toolkit",
-        "Cloudinary",
-        "Tailwind CSS"
-      ],
-      github: "https://github.com/ankitkarki27/eLearning-Platform-django-react",
+  {
+    title: "ELearning Management System",
+    description: "Supports course management, student progress tracking, and community discussion forums for an online learning experience.",
+    tags: ["React", "Django", "PostgreSQL", "RTK", "Tailwind"],
+    github: "https://github.com/ankitkarki27/eLearning-Platform-django-react",
+     image: "/image/padhai.png"
+  },
+  {
+    title: "Constructions Company Website",
+    description: "Company site with admin dashboard for managing projects, blogs, and services. Fully responsive for all devices.",
+    tags: ["React", "Laravel", "MySQL", "Tailwind"],
+    github: "https://github.com/ankitkarki27/Construction-backend",
+    link: "https://rainbowconstructions.vercel.app/",
+     image: "/image/construction-company.png"
+  },
+  {
+    title: "Jobs Nepal",
+    description: "Job portal where companies can post openings and users can browse and apply with ease.",
+    tags: ["Laravel", "MySQL", "Tailwind CSS"],
+    github: "https://github.com/ankitkarki27/job-portal",
+     image: "/image/project-jobsnepal.png"
+  },
+  {
+    title: "Trend-e-vision: E-commerce App",
+    description: "Shopping platform with product browsing, cart, and checkout functionality.",
+    tags: ["Django", "Tailwind CSS", "PostgreSQL"],
+    github: "https://github.com/ankitkarki27/dj-ecomstore.git",
+    link: "https://ankitkarki27.pythonanywhere.com/",
+     image: "/image/project-trendy.png"
+  },
+  {
+    title: "Bookmarker",
+    description: "Tool to save, organize, and manage bookmarks in one place with a clean UI.",
+    tags: ["Django", "React"],
+    github: "https://github.com/ankitkarki27/bookmarker",
+    link: "https://bookmarker-theta.vercel.app/",
+     image: "/image/project-bookmarker.jpg"
+  },
+  {
+    title: "Donors Nepal",
+    description: "Connects blood seekers with nearby donors using location-based matching.",
+    tags: ["PHP", "Laravel", "MySQL"],
+    github: "https://github.com/ankitkarki27/Donors-Nepal.git",
+    link: "https://github.com/ankitkarki27/Donors-Nepal.git",
+         image: "/image/project-dn3.jpg"
+  },
+  {
+    title: "Uthaoo: Online Scrap Collection System",
+    description: "Lets users schedule and manage household scrap pickups through an online dashboard.",
+    tags: ["PHP", "MySQL"],
+    github: "https://github.com/ankitkarki27/uthaoo-Online-Scrap-Collection-System.git",
+    date: "2023",
+    image: "/image/project-uthaoo.jpg"
+  }
+];
 
-    },
-    {
-      title: "Constructions Company Website",
-      description: "A full-stack web app built with Laravel, React (Vite), and MySQL. Admins can easily manage and publish projects, blogs, and services. Visitors can explore project galleries, read blog posts, and learn about the company. Fully responsive and optimized for a smooth user experience.",
-      tags: ["React", "Laravel", "MySQL", "Tailwind"],
-      github: "https://github.com/ankitkarki27/Construction-backend",
-      link: "https://rainbowconstructions.vercel.app/"
-    },
-    {
-      title: "Jobs Nepal",
-      description: "A job portal built with Laravel, Tailwind CSS, and MySQL. Companies can post job openings, and seekers can browse and apply easily through a user-friendly interface.",
-      tags: ["Laravel", "MySQL", "Tailwind CSS"],
-      github: "https://github.com/ankitkarki27/job-portal",
-
-    },
-    {
-      title: "Trend-e-vision: E-commerce App",
-      description: "An e-commerce platform built with Django, Tailwind CSS, and PostgreSQL. It offers a seamless shopping experience with product browsing, order and checkout.",
-      link: "https://ankitkarki27.pythonanywhere.com/",
-      github: "https://github.com/ankitkarki27/dj-ecomstore.git"
-    },
-    {
-      title: "Bookmarker",
-      description: "A full-stack web app for efficiently saving, organizing, and managing your favorite website links in one place.",
-      tags: ["Django", "React"],
-      github: "https://github.com/ankitkarki27/bookmarker",
-      link: "https://bookmarker-theta.vercel.app/",
-
-    },
-    {
-      title: "Donors Nepal",
-      description: "An online blood donor finder built with PHP, MySQL, and Bootstrap. It connects blood seekers with nearby donors using the Haversine algorithm for accurate location-based matching.",
-      tags: ["PHP", "Laravel", "MySQL"],
-      github: "https://github.com/ankitkarki27/Donors-Nepal.git",
-      link: "https://github.com/ankitkarki27/Donors-Nepal.git",
-
-    },
-    {
-      title: "Uthaoo: Online Scrap Collection System",
-      category: "full-stack",
-      description: "A full-stack web application for scheduling and managing scrap pickups, developed using PHP for the backend, MySQL for the database, and HTML, CSS, and JavaScript for the frontend.",
-      image: "assets/image/project-uthaoo.jpg",
-      tags: ["PHP", "MySQL"],
-      github: "https://github.com/ankitkarki27/uthaoo-Online-Scrap-Collection-System.git",
-      date: "2023"
-    }
-  ];
 
   const experience = [
     {
-      role: "Full Stack Developer",
-      company: "Tech Solutions Ltd",
-      period: "2023 - Present",
-      description: "Develop and maintain web applications using React and Django. Collaborate with cross-functional teams to deliver scalable solutions."
-    }
+      // role: "Backend Developer (Intern → Junior Developer)",
+      role: "Backend Developer(Intern)",
+      company: "NepBigyapan",
+      period: "Dec 2024 – May 2025",
+      description:
+        "Started as a backend intern and transitioned to Junior Developer over 6 months. Gained hands-on experience with Laravel and Django while working on projects like an institution management system and a restaurant management system. Built RESTful APIs and explored full-stack development through small internal projects.",
+    },
   ];
 
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
-      <section id="about" className="min-h-[70vh] flex items-center ">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 w-full">
-          <div className="space-y-8">
-            <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">Ankit Karki</h1>
-              <p className="text-blue-400 text-xl font-medium">Backend Developer</p>
+      {/* Modern Navbar - now matches content width */}
+      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md">
+        <div className="mx-auto px-6 max-w-3xl">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div
+              className="flex items-center"
+              onClick={() => scrollToSection('about')}
+            >
+              <span className="text-xl font-bold text-white">अंकित.</span>
             </div>
 
-            <div className="space-y-2 text-gray-400 justify-between">
-              <p className="text-m leading-relaxed">
-                Hi, I'm Ankit, a passionate <span className="text-white font-medium">Backend Developer</span> with expertise in
-                Django, Python, laravel and building scalable web applications. Based in Kathmandu, Nepal, I specialize
-                in creating robust server-side solutions.
-              </p>
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-6">
+              {['about', 'projects', 'skills', 'experience', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`text-sm font-bold cursor-pointer transition-colors ${activeSection === section ? 'text-white' : 'text-gray-400 hover:text-white'
+                    }`}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
+            </div>
 
-              <div className="space-y-2">
-                <p className="text-m leading-relaxed">
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-gray-400 hover:text-white focus:outline-none"
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-gray-900/95">
+            <div className="px-6 py-2 space-y-2">
+              {['about', 'projects', 'skills', 'experience', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`block w-full text-left py-2 text-sm font-medium ${activeSection === section ? 'text-white' : 'text-gray-400 hover:text-white'
+                    }`}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Main Content */}
+      <div className="pt-16">
+        {/* Hero/About Section */}
+        <section id="about" className="min-h-[calc(100vh-4rem)] flex items-center">
+          <div className="mx-auto px-6 py-12 w-full max-w-3xl">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h1 className="text-3xl font-bold text-white">Ankit Karki</h1>
+                <p className="text-gray-400">Backend Developer</p>
+
+                <div className="flex flex-wrap gap-4 items-center">
+                  <div className="flex items-center space-x-2">
+                    <Mail className="w-4 h-4 text-gray-400" />
+                    <span className="text-gray-400 text-sm">ankitkarki8088@gmail.com</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <MapPin className="w-4 h-4 text-gray-400" />
+                    <span className="text-gray-400 text-sm">Kathmandu, Nepal</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4 text-gray-400">
+                <p>
+                  Hi, I'm Ankit, a passionate <span className="text-white font-bold">Backend Developer</span> with expertise in
+                  Django, Python, Laravel and building scalable web applications.
+                </p>
+                <p>
                   My focus is on developing efficient APIs, optimizing database performance, and implementing
-                  secure authentication systems to power modern web applications.
+                  secure authentication systems.
+                </p>
+                <p className="text-m leading-relaxed">
+                  Currently working on <span  className="text-white font-bold"><a href="https://github.com/ankitkarki27/eLearning-Platform-django-react" >Padhai </a></span> (LMS platform), where I lead the
+                  development of both frontend and backend systems.
                 </p>
               </div>
 
-              <p className="text-m leading-relaxed">
-                Currently working on <span className="text-white font-medium">Trendy</span> (e-commerce platform)
-                and <span className="text-white font-medium">ePadhai</span> (LMS platform), where I lead the
-                development of both frontend and backend systems.
-              </p>
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://drive.google.com/file/d/1bTqSOuzPvr34nuxSrdb36tpSxGywTKVp/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 bg-gray-300 hover:bg-gray-200 px-4 py-2 rounded-lg text-black hover:text-black transition-colors border border-gray-700 text-sm"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Resume</span>
+                </a>
+
+                <a
+                  href="https://github.com/ankitkarki27"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 rounded-lg bg-black hover:bg-gray-800 text-gray-300 hover:text-white transition-colors border border-gray-700"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/ankitkarki27/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10 rounded-lg bg-black hover:bg-gray-800 text-gray-300 hover:text-white transition-colors border border-gray-700"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      {/* Main Content with padding bottom for navigation */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 pb-32 space-y-16">
-        {/* Skills */}
-        <section id="skills">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Skills</h2>
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 rounded-full bg-gray-800 text-gray-200 text-sm hover:bg-gray-700 transition-colors"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
-        {/* Experience */}
-        <section id="experience">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Experience</h2>
-          <div className="space-y-8">
-            {experience.map((exp, index) => (
-              <div key={index} className="border-l-2 border-blue-500 pl-6">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
-                  <h3 className="font-semibold text-lg sm:text-xl">{exp.role}</h3>
-                  <span className="text-gray-400 text-sm">{exp.period}</span>
-                </div>
-                <p className="text-blue-400 font-medium mb-3">{exp.company}</p>
-                <p className="text-gray-300">{exp.description}</p>
-              </div>
-            ))}
-          </div>
         </section>
 
-        {/* Projects */}
-        <section id="projects">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Projects</h2>
-          <div className="space-y-8">
-            {projects.map((project, index) => (
-              <div key={index} className="border-l-2 border-blue-500 pl-6">
-                <h3 className="font-semibold text-lg sm:text-xl mb-3">{project.name}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex space-x-4">
+        {/* Content Sections */}
+        <div className="mx-auto px-6 py-12 pb-32 space-y-16 max-w-3xl">
+          {/* Skills Section */}
+          <section id="skills">
+            <h2 className="text-2xl font-bold mb-6 text-white">Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 rounded-full bg-gray-800 text-gray-200 text-sm cursor-pointer hover:bg-gray-700 transition-colors"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          {/* Experience Section */}
+          <section id="experience">
+            <h2 className="text-2xl font-bold mb-6 text-white">Experience</h2>
+            <div className="space-y-6">
+              {experience.map((exp, index) => (
+                <div key={index} className="border-l-2 border-gray-500 pl-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2">
+                    <h3 className="font-semibold">{exp.role}</h3>
+                    <span className="text-gray-400 text-sm">{exp.period}</span>
+                  </div>
+                  <p className="text-gray-400 text-sm mb-2">{exp.company}</p>
+                  <p className="text-gray-300 text-sm">{exp.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Projects Section */}
+          <section id="projects">
+            <h2 className="text-2xl font-bold mb-6 text-white">Projects</h2>
+            <div className="space-y-8">
+              {projects.map((project, index) => (
+                <div key={index} className="border border-gray-700 rounded overflow-hidden">
+                  <div className="flex flex-col md:flex-row">
+                    <div className="md:w-1/2 h-50 bg-gray-800">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-fit"
+                      />
+                    </div>
+                    <div className="md:w-1/2 p-4">
+                      <h3 className="font-bold text-lg mb-2 text-white">{project.title}</h3>
+                      <p className="text-gray-300 mb-3 text-sm">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {project.tags.map((tags, i) => (
+                          <span key={i} className="px-2 py-1 rounded-full bg-gray-800 text-gray-200 text-xs">
+                            {tags}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex space-x-3">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-gray-400 hover:text-blue-300 text-xs font-medium transition-colors"
+                        >
+                          <Github className="w-3 h-3 mr-1" />
+                          GitHub
+                        </a>
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center text-gray-400 hover:text-blue-300 text-xs font-medium transition-colors"
+                          >
+                            <ExternalLink className="w-3 h-3 mr-1" />
+                            Live
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section id="contact">
+            <h2 className="text-2xl font-bold mb-6 text-white">Contact</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h3 className="font-semibold text-white">Get in touch</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <Mail className="w-4 h-4 text-gray-400" />
+                    <span className="text-gray-400 text-sm">ankitkarki8088@gmail.com</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Phone className="w-4 h-4 text-gray-400" />
+                    <span className="text-gray-400 text-sm">+977 9876543210</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="w-4 h-4 text-gray-400" />
+                    <span className="text-gray-400 text-sm">Kathmandu, Nepal</span>
+                  </div>
+                </div>
+                <div className="flex space-x-3 pt-2">
                   <a
-                    href={project.github}
+                    href="https://github.com/ankitkarki27"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
+                    className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
                   >
-                    <Github className="w-4 h-4 mr-1" />
-                    GitHub
+                    <Github className="w-3 h-3" />
                   </a>
                   <a
-                    href={project.demo}
-                    className="flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
+                    href="https://www.linkedin.com/in/ankitkarki27/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
                   >
-                    <ExternalLink className="w-4 h-4 mr-1" />
-                    Live Demo
+                    <Linkedin className="w-3 h-3" />
                   </a>
                 </div>
               </div>
-            ))}
+
+              <div className="bg-black/50 p-4 rounded">
+                <h3 className="font-semibold text-white mb-3">Send me a message</h3>
+                <form className="space-y-3">
+                  <div>
+                    <label htmlFor="name" className="block text-xs font-medium text-gray-300 mb-1">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      className="w-full px-3 py-2  border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-xs font-medium text-gray-300 mb-1">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      className="w-full px-3 py-2 border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-medium text-gray-300 mb-1">Message</label>
+                    <textarea
+                      id="message"
+                      rows="3"
+                      className="w-full px-3 py-2  border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
+                      placeholder="Your message here..."
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="px-4 py-2  border border-gray-600  rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm font-medium transition-colors cursor-pointer"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        {/* Footer */}
+        <footer className="border-t border-gray-800 py-4 text-gray-400">
+          <div className="mx-auto px-6 text-center text-xs max-w-3xl">
+            © {new Date().getFullYear()} Ankit Karki. All rights reserved.
           </div>
-        </section>
-
-
-
-        {/* Contact */}
-        <section id="contact">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-white">Contact</h2>
-          <div className="flex space-x-6">
-            <a
-              href="https://github.com/ankitkarki27"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Github className="w-5 h-5" />
-
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ankitkarki27/" target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Linkedin className="w-5 h-5" />
-
-            </a>
-            <a
-              href="mailto:ankitkarki8088@gmail.com" target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <Mail className="w-5 h-5" />
-
-            </a>
-
-            <a
-              href="https://drive.google.com/file/d/1bTqSOuzPvr34nuxSrdb36tpSxGywTKVp/view?usp=sharing" target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
-            >
-              <File className="w-5 h-5" />
-            </a>
-          </div>
-        </section>
+        </footer>
       </div>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-800 py-2 text-gray-400">
-        <div className="max-w-4xl mx-auto px-6 text-center text-sm">
-          © {new Date().getFullYear()} Alex Johnson. All rights reserved.
-        </div>
-      </footer>
-
-      {/* Bottom Navigation - Fixed position */}
-      <nav className="fixed bottom-4 left-0 right-0 z-50">
-        <div className="max-w-md mx-auto px-4">
-          <div className="flex justify-center bg-black/80 backdrop-blur-md rounded-full shadow-2xl p-1 border border-gray-800">
-            {['about', 'projects', 'skills', 'contact'].map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`capitalize transition-all duration-200 ease-out px-6 py-2.5 rounded-full text-sm font-medium mx-1 relative ${activeSection === section
-                  ? 'bg-gray-200 text-black shadow-lg'
-                  : 'text-gray-300 hover:bg-gray-400 hover:text-black'
-                  }`}
-              >
-                {section}
-              </button>
-            ))}
-          </div>
-        </div>
-      </nav>
     </div>
   );
 };
