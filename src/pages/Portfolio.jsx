@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, ExternalLink, Mail, Phone, MapPin, Download } from 'lucide-react';
+import { Github, Linkedin, ExternalLink, Mail, Phone, MapPin, Download, File } from 'lucide-react';
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -8,6 +8,18 @@ const Portfolio = () => {
   const skills = [
     "Python", "Django", "Laravel", "React", "PostgreSQL",
     "MySQL", "Postman", "Github"
+  ];
+  const education = [
+    {
+      level: "Bachelor of Computer Applications",
+      school: "Tribhuvan University, Kathmandu, Nepal",
+      date: "2020 - 2025"
+    },
+    {
+      level: "High School",
+      school: "Kantipur Secondary School, Biratnagar, Nepal",
+      date: "2017 - 2019"
+    },
   ];
 
   const projects = [
@@ -108,7 +120,7 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-black text-gray-100">
       {/* Fixed Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md h-16">
+      <nav className="fixed top-0 w-full  bg-black/90 backdrop-blur-md z-50 h-16">
         <div className="mx-auto px-6 max-w-3xl h-full">
           <div className="flex justify-between items-center h-full">
             {/* Logo */}
@@ -121,7 +133,7 @@ const Portfolio = () => {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-6">
-              {['about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
+              {['about', 'skills', 'experience', 'projects', 'education', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -222,7 +234,7 @@ const Portfolio = () => {
                       React
                     </span>
                   </div>
-                   <div className="absolute -bottom-3 -right-3 animate-float-vertical-reverse">
+                  <div className="absolute -bottom-3 -right-3 animate-float-vertical-reverse">
                     <span className="px-2 py-1 bg-black text-white text-xs font-mono rounded-lg border border-gray-700 shadow-md">
                       Python
                     </span>
@@ -255,7 +267,7 @@ const Portfolio = () => {
               {/* Buttons */}
               <div className="flex flex-wrap gap-3 pt-4">
                 <a
-                  href="https://drive.google.com/file/d/1bTqSOuzPvr34nuxSrdb36tpSxGywTKVp/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1AKVjMhslY9VcN4BhHj-zNeWb0OaDqnP9/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 bg-black hover:bg-gray-200 px-4 py-2 rounded-lg text-white hover:text-black transition-colors border border-gray-700 text-sm"
@@ -385,7 +397,25 @@ const Portfolio = () => {
             </div>
           </section>
 
+
+          <section
+            id="education"
+            style={sectionStyle}
+          >
+            <h2 className="text-2xl font-bold mb-6 text-white">Education</h2>
+            <div className="space-y-4">
+              {education.map((edu, index) => (
+                <div key={index} className="border-l-2 border-gray-500 pl-4">
+                  <h3 className="font-semibold text-white">{edu.level}</h3>
+                  <p className="text-gray-400 text-sm">{edu.school}</p>
+                  <p className="text-gray-500 text-xs mt-1">{edu.date}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           {/* Contact Section */}
+
           <section
             id="contact"
             style={sectionStyle}
@@ -413,30 +443,44 @@ const Portfolio = () => {
                     href="https://github.com/ankitkarki27"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
+                    className="flex items-center justify-center w-8 h-8 rounded-lg bg-black text-gray-300 hover:text-white transition-colors border border-gray-700"
                   >
-                    <Github className="w-3 h-3" />
+                    <Github className="w-4 h-4" />
                   </a>
                   <a
                     href="https://www.linkedin.com/in/ankitkarki27/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
+                    className="flex items-center justify-center w-8 h-8 rounded-lg bg-black text-gray-300 hover:text-white transition-colors border border-gray-700"
                   >
-                    <Linkedin className="w-3 h-3" />
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                  <a
+                    href="https://drive.google.com/file/d/1AKVjMhslY9VcN4BhHj-zNeWb0OaDqnP9/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-8 h-8 rounded-lg bg-black text-gray-300 hover:text-white transition-colors border border-gray-700"
+                  >
+                    <File className="w-4 h-4" />
                   </a>
                 </div>
               </div>
 
               <div className="bg-black/50 p-4 rounded">
                 <h3 className="font-semibold text-white mb-3">Send me a message</h3>
-                <form className="space-y-3">
+                <form
+                  action="https://formspree.io/f/xdkzgjjl"
+                  method="POST"
+                  className="space-y-3"
+                >
                   <div>
                     <label htmlFor="name" className="block text-xs font-medium text-gray-300 mb-1">Name</label>
                     <input
                       type="text"
                       id="name"
-                      className="w-full px-3 py-2  border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
+                      name="name"
+                      required
+                      className="w-full px-3 py-2 bg-black border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
                       placeholder="Your name"
                     />
                   </div>
@@ -445,22 +489,26 @@ const Portfolio = () => {
                     <input
                       type="email"
                       id="email"
-                      className="w-full px-3 py-2 border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
-                      placeholder="your.email@example.com"
+                      name="email"
+                      required
+                      className="w-full px-3 py-2 bg-black border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
+                      placeholder="your.email@gmail.com"
                     />
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-xs font-medium text-gray-300 mb-1">Message</label>
                     <textarea
                       id="message"
+                      name="message"
                       rows="3"
-                      className="w-full px-3 py-2  border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
+                      required
+                      className="w-full px-3 py-2 bg-black border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm"
                       placeholder="Your message here..."
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="px-4 py-2  border border-gray-600  rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm font-medium transition-colors cursor-pointer"
+                    className="px-4 py-2 bg-black hover:bg-gray-900 border border-gray-600 rounded text-white focus:outline-none focus:ring-1 focus:ring-gray-500 text-sm font-medium transition-colors"
                   >
                     Send Message
                   </button>
