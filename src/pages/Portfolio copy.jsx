@@ -177,14 +177,12 @@ const Portfolio = () => {
         >
           <div className="mx-auto px-6 py-12 w-full max-w-3xl">
             <div className="space-y-8">
-              {/* Name/Title and Image Row */}
               <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-                {/* Name and Title */}
                 <div className="space-y-2 flex-1">
                   <h1 className="text-3xl font-bold text-white">Ankit Karki</h1>
                   <p className="text-gray-400">Backend Developer</p>
 
-                  {/* Contact Info */}
+
                   <div className="flex flex-wrap gap-4 items-center pt-2">
                     <div className="flex items-center space-x-2">
                       <Mail className="w-4 h-4 text-gray-400" />
@@ -197,42 +195,14 @@ const Portfolio = () => {
                   </div>
                 </div>
 
-                {/* Image Container with Floating Tech Badges */}
-                <div className="hidden sm:block sm:pl-4 relative">
-                  {/* Image */}
+                {/* Image */}
+                <div className="hidden sm:block sm:pl-4">
                   <img
+                    // src="/image/myphoto.jpg"
                     src="/image/image.png"
                     alt="Ankit Karki"
-                    className="w-36 h-20 object-cover rounded-lg shadow-lg border border-gray-700"
+                    className="w-full sm:w-36 h-20 object-cover rounded-lg shadow-lg border border-black bg-origin-border hover:scale-105 transition-transform duration-300"
                   />
-
-                  {/* Floating Tech Badges with Animation */}
-                  <div className="absolute -top-3 -left-8 animate-float-vertical">
-                    <span className="px-2 py-1 bg-black text-white font-mono rounded-lg border border-gray-700 text-xs shadow-md">  Django
-                    </span>
-                  </div>
-
-                  <div className="absolute -top-3 -right-2 animate-float-vertical">
-                    <span className="px-2 py-1 bg-black text-white font-mono rounded-lg border border-gray-700 text-xs shadow-md">   Laravel
-                    </span>
-                  </div>
-
-                  <div className="absolute -bottom-3 -left-3 animate-float-horizontal-reverse">
-                    <span className="px-2 py-1 bg-black text-white text-xs font-mono rounded-lg border border-gray-700 shadow-md">
-                      React
-                    </span>
-                  </div>
-                   <div className="absolute -bottom-3 -right-3 animate-float-vertical-reverse">
-                    <span className="px-2 py-1 bg-black text-white text-xs font-mono rounded-lg border border-gray-700 shadow-md">
-                      Python
-                    </span>
-                  </div>
-
-                  {/* <div className="absolute -bottom-3 -right-3 animate-float-vertical-reverse">
-                    <span className="px-2 py-1 bg-black text-white text-xs font-mono rounded-lg border border-gray-100 shadow-md">
-                      Python
-                    </span>
-                  </div> */}
                 </div>
               </div>
 
@@ -285,6 +255,7 @@ const Portfolio = () => {
             </div>
           </div>
         </section>
+
 
         <div className="mx-auto px-6 py-12 pb-32 space-y-16 max-w-3xl">
           {/* Skills Section */}

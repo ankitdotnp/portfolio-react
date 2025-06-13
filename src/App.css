@@ -40,3 +40,39 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes floatVertical {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes floatHorizontal {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+@keyframes floatVerticalReverse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes floatHorizontalReverse {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-8px); }
+}
+
+.animate-float-vertical {
+  animation: floatVertical 4s ease-in-out infinite;
+}
+
+.animate-float-horizontal {
+  animation: floatHorizontal 5s ease-in-out infinite;
+}
+
+.animate-float-vertical-reverse {
+  animation: floatVerticalReverse 4.5s ease-in-out infinite;
+}
+
+.animate-float-horizontal-reverse {
+  animation: floatHorizontalReverse 5.5s ease-in-out infinite;
+}
